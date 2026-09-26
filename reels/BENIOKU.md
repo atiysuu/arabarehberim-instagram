@@ -1,7 +1,10 @@
 # Reels videoları
 
 176 dikey video (1080×1920, 9:16, H.264 + AAC, 15–28 sn, ses -14 LUFS).
-Kodla üretildi; müzik ve efektler sentezlendi, telif ve lisans sorunu yok.
+Görüntü kodla üretildi. Her videonun müziği ayrı bir parça: Kevin MacLeod
+(incompetech.com), CC BY 4.0. Lisans atıf istiyor; atıf her videonun `.txt`
+açıklamasında "Müzik: ..." satırı olarak var, açıklama kısaltılırken silinmemeli.
+Parça listesi `muzik-listesi.csv`. Geçiş efektleri kodla sentezlendi.
 
 - `sira.csv`: paylaşım sırası (seriler dönüşümlü). Yollar bu klasöre göre.
 - `<seri>/NNN-<ad>.mp4`: video
