@@ -136,6 +136,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--adet", type=int, default=1)
     ap.add_argument("--kuru", action="store_true")
+    ap.add_argument("--barinak-dene", action="store_true",
+                    help="kuru calistirmada ilk videoyu release'e yukleyip icerik tipini kontrol et")
     a = ap.parse_args()
 
     if not a.kuru and not os.getenv("IG_ACCESS_TOKEN"):
@@ -186,6 +188,18 @@ def main():
         except p.IGHata as e:
             p.hata(str(e))
             return 1
+
+        if a.kuru and a.barinak_dene and atilan == 0:
+            with tempfile.TemporaryDirectory() as gecici:
+                yerel = Path(gecici) / Path(video).name
+                git_dosyasi(f"reels/{video}", yerel)
+                url = video_yukle(yerel, Path(video).name)
+            with urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=60) as r:
+                tur = r.headers.get("Content-Type", "")
+            p.log(f"  barinak denemesi: {url} -> {tur}")
+            if not tur.startswith("video/mp4"):
+                p.hata(f"barinak videoyu {tur} diye veriyor, video/mp4 bekleniyordu")
+                return 1
 
         if a.kuru:
             p.log(f"  kuru calistirma: video repoda, kapak acik, aciklama {len(aciklama)} karakter")

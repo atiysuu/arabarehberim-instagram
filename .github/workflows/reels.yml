@@ -15,6 +15,10 @@ on:
         description: "Kuru calistirma: Instagram'a atma, sadece kontrol et"
         type: boolean
         default: false
+      barinak_dene:
+        description: "Kuru calistirmada ilk videoyu release'e yukleyip kontrol et"
+        type: boolean
+        default: false
 
 concurrency:
   group: instagram-reels
@@ -44,7 +48,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }}
+        run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }}
 
       - name: Durumu kaydet
         if: always()
