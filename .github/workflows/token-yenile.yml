@@ -25,6 +25,7 @@ jobs:
           sparse-checkout: |
             /*
             !/posts/
+            !/reels/
 
       - name: Tokeni yenile ve secret'a yaz
         env:

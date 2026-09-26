@@ -1,52 +1,50 @@
-name: Instagram'a paylas
+name: Instagram'a Reels paylas
 
 on:
-  # GitHub cron UTC calisir; Turkiye UTC+3. GitHub zamanlanmis isleri
-  # yogunlukta 5-30 dk geciktirebilir, bu yuzden dakika :37.
-  #   06:37 UTC = 09:37 TR,  10:37 UTC = 13:37 TR,  17:37 UTC = 20:37 TR
-  # Gunde post sayisini degistirmek icin saat listesini degistirin.
-  # Durdurmak icin: Actions > "Instagram'a paylas" > ... > Disable workflow.
+  # Gunde bir Reels: 15:07 UTC = 18:07 TR. Postlar (09:37, 13:37, 20:37)
+  # ayri is akisinda; ikisi birbirini beklemez.
+  # Durdurmak icin: Actions > "Instagram'a Reels paylas" > ... > Disable workflow.
   schedule:
-    - cron: "37 6,10,17 * * *"
+    - cron: "7 15 * * *"
   workflow_dispatch:
     inputs:
       adet:
-        description: "Kac post atilsin"
+        description: "Kac Reels atilsin"
         default: "1"
       kuru:
         description: "Kuru calistirma: Instagram'a atma, sadece kontrol et"
         type: boolean
         default: false
 
-# Iki calisma ayni anda ayni postu atmasin
 concurrency:
-  group: instagram-paylas
+  group: instagram-reels
   cancel-in-progress: false
 
 permissions:
-  contents: write   # durum/paylasilanlar.jsonl commit'i
+  contents: write   # reels-barinak release'i + durum/reels.jsonl commit'i
 
 jobs:
-  paylas:
+  reels:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
-      # Gorselleri indirmeye gerek yok (Instagram onlari raw adresinden
-      # kendisi cekiyor); sadece metinler ve durum dosyalari gelsin.
+      # Videolar indirilmez; betik o gun gereken tek videoyu git'ten ceker.
       - uses: actions/checkout@v5
         with:
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
-            !/posts/**/*.jpg
-            !/reels/
+            !/posts/
+            !/reels/**/*.mp4
+            !/reels/**/*.jpg
 
-      - name: Siradaki postu paylas
+      - name: Siradaki Reels'i paylas
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
-        run: python3 scripts/paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }}
 
       - name: Durumu kaydet
         if: always()
@@ -58,7 +56,7 @@ jobs:
             echo "durumda degisiklik yok"
             exit 0
           fi
-          git commit -q -m "durum: paylasim kaydi [skip ci]"
+          git commit -q -m "durum: reels kaydi [skip ci]"
           for i in 1 2 3; do
             git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
             sleep $((i * 5))

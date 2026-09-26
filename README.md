@@ -1,8 +1,8 @@
 # Araba Rehberim · Instagram paylaşımı
 
 [arabarehberim.net](https://arabarehberim.net) için hazırlanan 1.546 Instagram
-postunu sırayla, günde üç kez kendi kendine paylaşır. GitHub Actions üzerinde
-çalışır; bilgisayarın kapalı olabilir.
+postunu günde üç kez, 176 Reels videosunu günde bir kez kendi kendine
+paylaşır. GitHub Actions üzerinde çalışır; bilgisayarın kapalı olabilir.
 
 ```
 sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► durum/paylasilanlar.jsonl
@@ -20,6 +20,19 @@ sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► dur
   adresinden Instagram'a verilir. Bu yüzden repo **public** kalmalı; içinde
   gizli bir şey yok.
 
+## Reels
+
+- **Saat:** her gün yaklaşık 18:07 (Türkiye), iş akışı "Instagram'a Reels paylas".
+- **Sıra:** `reels/sira.csv` (seriler dönüşümlü). 176 video, günde 1 → yaklaşık 6 ay.
+- **Kayıt:** `durum/reels.jsonl`.
+- Instagram videoyu kendisi indiriyor ve `video/mp4` içerik tipi istiyor;
+  `raw.githubusercontent.com` mp4'ü `application/octet-stream` diye verdiği
+  için o günün videosu önce bu reponun `reels-barinak` release'ine yüklenir,
+  adresi oradan verilir. Release'te yalnızca son 5 video tutulur, eskileri
+  silinir (Instagram'daki Reels etkilenmez). Kapak görseli `-kapak.jpg`
+  raw adresinden gider.
+- Ek secret gerekmez; release için iş akışının kendi `GITHUB_TOKEN`'ı yeter.
+
 ## Kurulum
 
 Secrets → **Settings → Secrets and variables → Actions → New repository secret**
@@ -36,6 +49,8 @@ yazar.
 ## Elle çalıştırma
 
 **Actions → "Instagram'a paylas" → Run workflow**
+
+Reels için aynısı: **Actions → "Instagram'a Reels paylas" → Run workflow**.
 
 - `kuru` işaretli: Instagram'a dokunmaz; sıradaki postların görsel adreslerini
   ve açıklamalarını kontrol eder.
@@ -80,6 +95,9 @@ durum/token.json                    token bitiş tarihi
 scripts/paylas.py                   paylaşım
 scripts/token_yenile.py             token yenileme
 scripts/sira_olustur.py             sırayı kurar
+scripts/reels_paylas.py             Reels paylaşımı
+reels/                              Reels videoları, kapakları, açıklamaları ve sira.csv
+durum/reels.jsonl                   paylaşılan Reels
 ```
 
 Postlar Araç Rehberim projesindeki Instagram üreticisinden gelir. Şablon
