@@ -1,0 +1,19 @@
+SEAT Ibiza 4. Nesil (6J kasa · 2008–2017) sahipleri ve alıcıları için uyarı: 1.2 / 1.4 TSI (EA111) zincir gergisi arızası ve zincir uzaması.
+
+Belirti: Soğuk çalıştırmada birkaç saniye süren metalik şıkırtı, rölantide düzensizlik, motor arıza lambası. Zincir dişten atlarsa motor stop eder ve bir daha çalışmaz.
+
+Neden oluyor: EA111 ailesi 1.2 ve 1.4 TSI motorlarda ilk tip zincir gergisi, motor dururken yağ basıncı düşünce zinciri yeterince gergin tutamıyor; zincir zamanla uzuyor ve dişliler üzerinde boşluk yapıyor. 2012 sonrası gelen kayışlı EA211 motorlarda bu sorun yok.
+
+Çözüm: Revize gergiyle birlikte zincir, kızaklar ve dişlilerin takım hâlinde değişimi; yalnız gergiyi değiştirmek yetmez. Zincir atlamış ve supaplar eğilmişse silindir kapağının da onarılması gerekir.
+
+Önlem: Soğuk çalıştırmadaki şıkırtıyı ertelemeyin. Yağı üretici onaylı yağla, 10.000 km’de ya da yılda bir değiştirin; gergi yağ basıncıyla çalışır.
+
+Tahmini onarım maliyeti Eylül 2026 fiyatlarıyla 16.000–45.000 TL.
+
+Etkilenen motorlar: 1.2 TSI 85 HP (CBZA), 1.2 TSI 105 HP (CBZB)
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/seat/ibiza/mk4
+
+Fotoğraf: Vauxford · CC BY-SA 4.0 · Wikimedia Commons
+
+#seat #seatibiza #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

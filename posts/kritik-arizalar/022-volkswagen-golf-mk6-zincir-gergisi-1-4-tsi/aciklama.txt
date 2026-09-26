@@ -1,0 +1,19 @@
+Volkswagen Golf Mk6 (5K kasa · 2008–2012) sahipleri ve alıcıları için uyarı: 1.4 TSI zincir gergisi atlaması.
+
+Belirti: Soğuk çalıştırmada motordan birkaç saniye süren metalik tıkırtı, rölantide düzensizlik, ilerleyen aşamada motor arıza lambası ve çalışmama. Zincir atlarsa supap-piston teması olur ve motor durur.
+
+Neden oluyor: EA111 ailesi 1.4 TSI motorlarda kullanılan ilk tip zincir gergisi (tensiyoner), yayı zamanla zayıfladığı için zinciri yeterince gergin tutamıyor. Özellikle motor dururken basıncın düşmesiyle zincir boşluk yapıyor ve ilk çalıştırmada dişten atlayabiliyor.
+
+Çözüm: Revize edilmiş gergi (güncel parça numarası) ile birlikte zincir, kızak ve dişli takımının komple değişimi. Sadece gergiyi değiştirmek eksik çözümdür, zincir de uzamış olur. Zincir atlamış ve supap eğilmişse motorun açılması gerekir; bu durumda maliyet birkaç katına çıkar.
+
+Önlem: Soğuk çalıştırmadaki tıkırtıyı asla ertelemeyin. Yağ değişim aralığını uzatmayın (15.000 km yerine 10.000 km önerilir), çünkü zincir gergisi yağ basıncıyla çalışır.
+
+Tahmini onarım maliyeti Eylül 2026 fiyatlarıyla 18.000–45.000 TL.
+
+Etkilenen motorlar: 1.4 TSI EA111 CAXA, 1.4 TSI EA111 CAVD, 1.2 TSI EA111 CBZA
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/volkswagen/golf/mk6
+
+Fotoğraf: OSX · kamu malı · Wikimedia Commons
+
+#volkswagen #volkswagengolf #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

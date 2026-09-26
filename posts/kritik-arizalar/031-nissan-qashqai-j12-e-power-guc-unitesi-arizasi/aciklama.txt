@@ -1,0 +1,17 @@
+Nissan Qashqai J12 (J12 kasa · 2021’den beri) sahipleri ve alıcıları için uyarı: e-POWER hibrit güç ünitesinde arıza ve çekiş kaybı.
+
+Belirti: Göstergede hibrit sistem arıza uyarıları yanıyor ve araç belirgin güç kaybediyor; bazı araçlar yolda hareket edemez hâle geliyor.
+
+Neden oluyor: e-POWER'da benzinli motor yalnız jeneratörü çeviriyor, tekerlekleri elektrik motoru döndürüyor; jeneratörde, inverterde (güç dönüştürücü), yüksek gerilim bataryasında ya da elektrik motorunda çıkan bir arıza bütün sistemi durdurabiliyor. Kullanıcı bildirimlerinde jeneratör arızası yüzünden hareketsiz kalan araç var.
+
+Çözüm: Yüksek gerilim sisteminde yetkili serviste arıza tespiti yapılır; yazılım güncellemesiyle çözülmeyen durumlarda arızalı birim değiştirilir ve onarım pahalı olabilir.
+
+Önlem: İkinci elde hibrit sistem garantisinin kalan süresini ve servis kayıtlarını kontrol edin, hibrit sistem uyarısı yanan aracı almayın.
+
+Etkilenen motorlar: e-POWER 1.5 VC-T Hibrit 190 HP (KR15DDT)
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/nissan/qashqai/j12
+
+Fotoğraf: M 93 · CC BY-SA 3.0 de · Wikimedia Commons
+
+#nissan #nissanqashqai #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

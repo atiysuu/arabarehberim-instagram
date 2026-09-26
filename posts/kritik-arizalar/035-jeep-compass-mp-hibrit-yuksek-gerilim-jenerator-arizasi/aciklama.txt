@@ -1,0 +1,17 @@
+Jeep Compass MP (MP kasa · 2017’den beri) sahipleri ve alıcıları için uyarı: Plug-in hibritte yüksek gerilim marş-şarj jeneratörünün arızalanması.
+
+Belirti: Hibrit sistem arıza uyarısı çıkıyor, elektrikli sürüş devreden çıkıyor ya da batarya şarj olmuyor; bazı araçlar çalışmıyor ve uzun süre serviste kalıyor.
+
+Neden oluyor: Benzinli motora bağlı yüksek gerilim marş-şarj jeneratörü ve onu yöneten güç elektroniği, enerjiyi motor, batarya ve arka elektrik motoru arasında dağıtıyor. Bu parçalardan biri arızalanınca hibrit sistem kendini kapatıyor.
+
+Çözüm: Arıza kayıtları okunup önce yazılım güncellenir; arızalı jeneratör ya da güç elektroniği değiştirilir. Parça bekleme süreleri uzun olabiliyor.
+
+Önlem: İkinci elde hibrit sistemin yazılım güncellemelerinin ve varsa garanti kapsamındaki onarımların kaydını isteyin.
+
+Etkilenen motorlar: 1.3 T4 Plug-in Hibrit 190 HP, 1.3 T4 Plug-in Hibrit 240 HP
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/jeep/compass/mp
+
+Fotoğraf: Kevauto · CC BY-SA 4.0 · Wikimedia Commons
+
+#jeep #jeepcompass #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

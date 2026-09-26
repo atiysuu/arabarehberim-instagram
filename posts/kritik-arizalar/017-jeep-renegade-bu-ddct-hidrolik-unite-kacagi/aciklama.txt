@@ -1,0 +1,19 @@
+Jeep Renegade (BU kasa · 2014’ten beri) sahipleri ve alıcıları için uyarı: DDCT şanzımanın hidrolik ünitesinde kaçak ve vites kutusu uyarısı.
+
+Belirti: Göstergede "Vites kutusunu kontrol ettirin" uyarısı çıkıyor, vites göstergesi kayboluyor ya da bazı vitesler girmiyor. Şanzıman acil moda geçiyor; bazı araçlar yolda kalıyor.
+
+Neden oluyor: Vitesleri ve kavramaları hidrolik basınçla kumanda eden ünitede yağ kaçağı ya da basınç düşüklüğü olunca şanzıman vitesleri doğru seçemiyor. Aktüatör ya da şanzıman beyni arızası da aynı uyarıya yol açabiliyor.
+
+Çözüm: Arıza kayıtları okunur, hidrolik ünitenin sızdırmazlığı ve basıncı kontrol edilir. Kaçak varsa hidrolik ünite onarılır ya da değiştirilir; gerekirse şanzıman beyninin yazılımı güncellenir.
+
+Önlem: İkinci elde şanzımanın altında yağ izi arayın ve servis kayıtlarında tekrarlayan şanzıman uyarısı olup olmadığını sorun.
+
+Tahmini onarım maliyeti Eylül 2026 fiyatlarıyla 32.500–97.000 TL.
+
+Etkilenen motorlar: 1.3 T4 150 HP, 6 ileri DDCT (otomatik), 1.4 MultiAir 140 HP, 6 ileri DDCT (otomatik), 1.6 MultiJet 120 HP, 6 ileri DDCT (otomatik)
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/jeep/renegade/bu
+
+Fotoğraf: Elise240SX · CC BY-SA 4.0 · Wikimedia Commons
+
+#jeep #jeeprenegade #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

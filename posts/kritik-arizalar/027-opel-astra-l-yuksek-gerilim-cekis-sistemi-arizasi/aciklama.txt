@@ -1,0 +1,17 @@
+Opel Astra L (C02 kasa · 2021’den beri) sahipleri ve alıcıları için uyarı: Yüksek gerilim çekiş sistemi arızasıyla gücün kesilip aracın yolda kalması.
+
+Belirti: Sürüş sırasında göstergede elektrikli çekiş sistemi arızası uyarısı çıkar, güç kesilir ve araç yolda kalabilir. Şikâyetlerde arızanın onarımdan sonra tekrarladığı da bildiriliyor.
+
+Neden oluyor: Uyarı, elektrik motoru, invertör (bataryadaki doğru akımı motor için alternatif akıma çeviren güç elektroniği), yüksek gerilim kablo tesisatı ya da batarya yönetiminde bir hata algılandığında sistemin kendini korumaya almasıyla çıkıyor. Arızanın kaynağı araca göre değişiyor.
+
+Çözüm: Arıza kayıtlarıyla hatanın kaynağı bulunur; yazılım güncellenir, arızalı kablo tesisatı, invertör ya da elektrik motoru değiştirilir.
+
+Önlem: Her arızayı servis kaydına geçirtin ve ikinci elde yüksek gerilim sistemiyle ilgili onarım geçmişini sorun.
+
+Etkilenen motorlar: Elektrik 156 HP 54 kWh
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/opel/astra/l
+
+Fotoğraf: Alexander Migl · CC BY-SA 4.0 · Wikimedia Commons
+
+#opel #opelastra #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

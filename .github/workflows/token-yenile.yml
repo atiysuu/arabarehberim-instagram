@@ -1,0 +1,49 @@
+name: Instagram tokenini yenile
+
+# Uzun omurlu token 60 gunde doluyor; haftada bir yenilemek genis pay birakir.
+on:
+  schedule:
+    - cron: "0 4 * * 1"   # her pazartesi 07:00 TR
+  workflow_dispatch:
+
+concurrency:
+  group: instagram-token
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # durum/token.json (yalniz bitis tarihi) commit'i
+
+jobs:
+  yenile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/posts/
+
+      - name: Tokeni yenile ve secret'a yaz
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          # Fine-grained PAT; yalniz bu repo, izin: Secrets -> Read and write
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 scripts/token_yenile.py
+
+      - name: Bitis tarihini kaydet
+        if: always()
+        run: |
+          git config user.name  "arabarehberim-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add durum/token.json 2>/dev/null || exit 0
+          if git diff --staged --quiet; then exit 0; fi
+          git commit -q -m "durum: token bitis tarihi [skip ci]"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

@@ -1,0 +1,66 @@
+name: Instagram'a paylas
+
+on:
+  # GitHub cron UTC calisir; Turkiye UTC+3. GitHub zamanlanmis isleri
+  # yogunlukta 5-30 dk geciktirebilir, bu yuzden dakika :37.
+  #   06:37 UTC = 09:37 TR,  10:37 UTC = 13:37 TR,  17:37 UTC = 20:37 TR
+  # Gunde post sayisini degistirmek icin saat listesini degistirin.
+  # Durdurmak icin: Actions > "Instagram'a paylas" > ... > Disable workflow.
+  schedule:
+    - cron: "37 6,10,17 * * *"
+  workflow_dispatch:
+    inputs:
+      adet:
+        description: "Kac post atilsin"
+        default: "1"
+      kuru:
+        description: "Kuru calistirma: Instagram'a atma, sadece kontrol et"
+        type: boolean
+        default: false
+
+# Iki calisma ayni anda ayni postu atmasin
+concurrency:
+  group: instagram-paylas
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # durum/paylasilanlar.jsonl commit'i
+
+jobs:
+  paylas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # Gorselleri indirmeye gerek yok (Instagram onlari raw adresinden
+      # kendisi cekiyor); sadece metinler ve durum dosyalari gelsin.
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/posts/**/*.jpg
+
+      - name: Siradaki postu paylas
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python3 scripts/paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }}
+
+      - name: Durumu kaydet
+        if: always()
+        run: |
+          git config user.name  "arabarehberim-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add durum/
+          if git diff --staged --quiet; then
+            echo "durumda degisiklik yok"
+            exit 0
+          fi
+          git commit -q -m "durum: paylasim kaydi [skip ci]"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep $((i * 5))
+          done
+          echo "::error::durum kaydi push edilemedi"
+          exit 1

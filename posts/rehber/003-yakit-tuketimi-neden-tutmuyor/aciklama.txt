@@ -1,0 +1,23 @@
+Beyan edilen yakıt tüketimi neden tutmuyor?
+
+Broşürde 4,5 litre yazan aracın 6 litre yakması şaşırtıcı değil. Beyan değeri yolda değil laboratuvarda ölçülüyor.
+
+1. NEDC ve WLTP: Eski NEDC testi yumuşak hızlanmalı, kısa ve düşük hızlıydı; değerler gerçeğin epey altında kalıyordu. 2018’den beri kullanılan WLTP daha gerçekçi ve aynı araçta ortalama beşte bir daha yüksek sonuç veriyor.
+
+2. Eski ve yeni aracı kıyaslarken: 2016 model bir aracın beyan tüketimini 2022 model bir aracınkiyle yan yana koyunca eski araç olduğundan az yakıyormuş gibi görünür. Farklı dönemlerden iki nesli kıyaslarken bu farkı akılda tutun.
+
+3. Tüketimi artıran şeyler: En büyük etken kısa yollar: soğuk motor ısınana kadar fazla yakar. Dur kalk trafik, klima, düşük lastik basıncı, tavan bagajı, yük ve sert sürüş tüketimi birkaç litre artırabilir.
+
+4. Motor türünün etkisi: Dizel otoyolda beyana yaklaşır, şehirde farkı açar. Hibrit tam tersi: yavaş trafikte beyana yakın, yüksek hızda daha fazla yakar. Küçük turbo benzinliler sakin sürüşte az, yük altında hızla daha çok yakar.
+
+5. Gerçek tüketimi ölçmek: Depoyu tamamen doldurup günlük kilometreyi sıfırlayın. Sonraki dolumda giren litreyi yapılan kilometreye bölüp yüzle çarpın. Birkaç dolumun ortalaması tek ölçümden daha doğrudur; yol bilgisayarı çoğu araçta biraz iyimserdir.
+
+6. Masrafa etkisi: Yılda 15.000 km yapan bir araçta 100 kilometrede bir litrelik fark yılda 150 litre yakıt demek. İki aracı kendi kilometrenizle karşılaştırmak için maliyet hesaplayıcıyı kullanabilirsiniz.
+
+Yazının tamamı: arabarehberim.net/rehber/yakit-tuketimi-neden-tutmuyor
+
+Kaydedin, lazım olduğunda elinizin altında olsun.
+
+Kapak fotoğrafı (Clio Mk5): Alexander Migl · CC BY-SA 4.0 · Wikimedia Commons
+
+#yakittuketimi #wltp #yakittasarrufu #otomotiv #arabarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

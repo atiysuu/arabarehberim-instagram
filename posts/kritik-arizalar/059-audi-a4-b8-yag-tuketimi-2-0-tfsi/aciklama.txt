@@ -1,0 +1,19 @@
+Audi A4 B8 (B8 kasa · 2007–2015) sahipleri ve alıcıları için uyarı: 2.0 TFSI aşırı yağ tüketimi (piston segmanı).
+
+Belirti: 1.000 km’de 1 litreden fazla yağ eksilmesi, egzozdan mavimsi duman, yağ seviyesi uyarısının sık yanması, bujilerin yağlanması, katalizörün zamanla bozulması.
+
+Neden oluyor: EA888 Gen2 (2008-2011 üretim) motorlarda piston segmanlarının tasarımı yağın yanma odasına kaçmasına izin veriyor. Ayrıca karter havalandırma valfi (PCV) arızası tüketimi artırıyor.
+
+Çözüm: Önce PCV valfi ve turbo keçesi kontrol edilir. Asıl çözüm pistonların revize segmanlı yeni tip pistonlarla değişimidir; bu motorun açılmasını gerektirir. Audi bazı pazarlarda bu iş için uzatılmış garanti/kampanya uyguladı.
+
+Önlem: Bu nesilde 2.0 TFSI alacaksanız alım öncesi yağ tüketim testi yaptırın: yağı tamamlayıp 1.000 km sonra tekrar ölçün. 2011 sonrası üretimlerde sorun büyük ölçüde giderildi. Alternatif olarak 2.0 TDI versiyon bu açıdan daha güvenlidir.
+
+Tahmini onarım maliyeti Eylül 2026 fiyatlarıyla 40.000–120.000 TL.
+
+Etkilenen motorlar: 2.0 TFSI EA888 Gen2 CAEB, 2.0 TFSI EA888 Gen2 CDNC
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/audi/a4/b8
+
+Fotoğraf: OSX · kamu malı · Wikimedia Commons
+
+#audi #audia4 #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

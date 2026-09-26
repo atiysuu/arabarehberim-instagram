@@ -1,0 +1,19 @@
+Citroën C3 4. nesil (CC21 kasa · 2024’ten beri) sahipleri ve alıcıları için uyarı: e-DCS6 hibrit şanzımanın kilitlenip vitese geçmemesi.
+
+Belirti: Şanzımandan mekanik sesler geliyor, vitesler geçmiyor; bazı araçlarda araç çalışmıyor ya da ne ileri ne geri gidebiliyor ve yolda kalıyor.
+
+Neden oluyor: e-DCS6, içinde elektrik motoru bulunan çift kavramalı bir şanzıman; vites seçici, kavramalar, mekatronik (şanzımanı yöneten elektronik-hidrolik ünite) ya da 12 V gerilimi vites konumunu doğrulayamazsa sistem şanzımanı güvenli konumda kilitliyor.
+
+Çözüm: Arıza kayıtları okunur, şanzıman ve hibrit sistem yazılımı güncellenip adaptasyon yapılır; gerekirse mekatronik ünite ya da vites seçici değiştirilir.
+
+Önlem: 12 V akünün sağlıklı olmasına dikkat edin; ikinci elde şanzımanla ilgili servis kaydını ve güncellemeleri sorun.
+
+Tahmini onarım maliyeti Eylül 2026 fiyatlarıyla 27.000–81.000 TL.
+
+Etkilenen motorlar: 1.2 Hafif Hibrit 101 HP (HN09), e-DCS6 (otomatik)
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/citroen/c3/cc21
+
+Fotoğraf: M 93 · CC BY-SA 3.0 de · Wikimedia Commons
+
+#citron #citronc3 #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

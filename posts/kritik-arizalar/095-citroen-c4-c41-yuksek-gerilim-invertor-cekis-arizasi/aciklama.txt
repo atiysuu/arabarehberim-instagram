@@ -1,0 +1,17 @@
+Citroën C4 3. nesil (C41 kasa · 2020’den beri) sahipleri ve alıcıları için uyarı: Yüksek gerilim sisteminde invertör ya da kablo arızasıyla çekişin kesilmesi.
+
+Belirti: Göstergede "çekiş sistemi arızası" uyarısı çıkar, araç hızlanırken silkeler ya da güç keser. Uyarı birkaç kez tekrarladıktan sonra araç yolda kalabilir.
+
+Neden oluyor: Elektrik motorunu besleyen invertörün (bataryadaki doğru akımı motor için alternatif akıma çeviren güç elektroniği) kablo tesisatında ya da soketlerinde temassızlık oluşuyor. Bazı araçlarda arıza invertörün kendisinden ya da batarya tarafından geliyor.
+
+Çözüm: Arıza kayıtlarıyla hatanın yeri bulunur; invertör kablo tesisatı ya da soketleri yenilenir, gerekirse invertör değiştirilir ve yazılım güncellenir.
+
+Önlem: Uyarı bir kez bile çıktıysa servise kaydettirin; ikinci elde bu arıza için yapılmış onarım ya da kampanya kaydını sorun.
+
+Etkilenen motorlar: e-C4 136 HP 50 kWh
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/citroen/c4/c41
+
+Fotoğraf: Alexander Migl · CC BY-SA 4.0 · Wikimedia Commons
+
+#citron #citronc4 #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

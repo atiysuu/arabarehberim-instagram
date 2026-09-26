@@ -1,0 +1,17 @@
+Citroën C3 4. nesil (CC21 kasa · 2024’ten beri) sahipleri ve alıcıları için uyarı: Yüksek gerilim sisteminin güvenli moda geçip çekişi kesmesi.
+
+Belirti: Güç düşüyor, araç geç hazır oluyor ya da seyir hâlinde duruyor; göstergede elektrikli sürüş sistemi arızası mesajı çıkıyor.
+
+Neden oluyor: Elektrik motoru, invertör (akım dönüştürücü), redüktör ve yüksek gerilim yönetimi birlikte çalışmak zorunda; bir sensör, şarj kilidi ya da çekiş kontrol ünitesi tutarsız değer gönderince sistem kendini güvenli moda alıyor.
+
+Çözüm: Arıza kayıtları okunup yazılım güncellenir; kalıcı arıza varsa ilgili sensör, kablo bağlantısı ya da ünite değiştirilir.
+
+Önlem: İkinci elde yazılım güncellemelerinin ve çekiş sistemiyle ilgili servis kayıtlarının yapılıp yapılmadığını sorun.
+
+Etkilenen motorlar: e-C3 113 HP 44 kWh
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/citroen/c3/cc21
+
+Fotoğraf: M 93 · CC BY-SA 3.0 de · Wikimedia Commons
+
+#citron #citronc3 #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

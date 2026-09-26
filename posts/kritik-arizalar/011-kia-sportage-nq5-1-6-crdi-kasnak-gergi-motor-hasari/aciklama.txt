@@ -1,0 +1,19 @@
+Kia Sportage Mk5 (NQ5 kasa · 2021’den beri) sahipleri ve alıcıları için uyarı: 1.6 CRDi hafif hibritte marş-şarj kasnağı ve gergi kilitlenmesiyle motor hasarı.
+
+Belirti: Motorun kayış tarafından gıcırtı ya da metalik ses geliyor. Kasnak ya da gergi aniden kilitlenirse motor seyir hâlinde stop ediyor ve yeniden çalışmıyor.
+
+Neden oluyor: 48 V hafif hibrit sistemin marş-şarj ünitesi (MHSG), kasnağı ve yardımcı kayış gergisi krank miline anormal yük bindirebiliyor. Kasnak ya da gergi makarası aniden kilitlenince krank miline gelen sert darbe motorun içinde ağır hasara yol açıyor.
+
+Çözüm: Ses erken fark edilirse gergi makarası, kasnak ve kayış değiştirilip marş-şarj ünitesi kontrol ediliyor; motor içten hasar gördüyse motor değişimi gerekiyor.
+
+Önlem: Kayış tarafından anormal ses, metalik gıcırtı ya da ani stop etme olursa aracı çalıştırmakta ısrar etmeyip servise çektirin; ikinci elde gergi ve kasnak değişiminin yapılıp yapılmadığını servis kayıtlarından sorun.
+
+Tahmini onarım maliyeti Eylül 2026 fiyatlarıyla 90.000–250.000 TL.
+
+Etkilenen motorlar: 1.6 CRDi Hafif Hibrit 136 HP (D4FE)
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/kia/sportage/nq5
+
+Fotoğraf: Vauxford · CC BY-SA 4.0 · Wikimedia Commons
+
+#kia #kiasportage #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

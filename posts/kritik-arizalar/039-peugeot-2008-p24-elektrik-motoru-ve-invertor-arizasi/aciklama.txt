@@ -1,0 +1,17 @@
+Peugeot 2008 Mk2 (P24 kasa · 2019’dan beri) sahipleri ve alıcıları için uyarı: Yüksek gerilim sisteminde invertör ya da elektrik motoru arızasıyla çekiş kaybı.
+
+Belirti: Sürüş sırasında göstergede çekiş sistemi arızası uyarısı yanar, güç kesilir ve araç kendini korumaya alarak durabilir; bazen yeniden çalışmaz.
+
+Neden oluyor: Elektrik motoru, invertör (bataryadaki doğru akımı motor için alternatif akıma çeviren güç elektroniği), yüksek gerilim kablo tesisatı ya da batarya yönetim sistemindeki bir hata sistemi güvenlik moduna alıyor. Kullanıcı bildirimleri arasında elektrik motorunun 18.000 km'de arızalandığı bir örnek de var.
+
+Çözüm: Arıza kayıtlarıyla hatanın kaynağı bulunur; yazılım güncellemesiyle düzelmezse invertör, elektrik motoru ya da ilgili kablo tesisatı değiştirilir.
+
+Önlem: İkinci elde yüksek gerilim sistemiyle ilgili servis kayıtlarını ve kalan garanti süresini sorun.
+
+Etkilenen motorlar: e-2008 136 HP 50 kWh
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/peugeot/2008/p24
+
+Fotoğraf: Cutlass · CC0 · Wikimedia Commons
+
+#peugeot #peugeot2008 #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

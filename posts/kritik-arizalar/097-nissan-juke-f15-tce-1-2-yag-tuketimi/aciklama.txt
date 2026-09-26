@@ -1,0 +1,19 @@
+Nissan Juke F15 (F15 kasa · 2010–2019) sahipleri ve alıcıları için uyarı: 1.2 TCe aşırı yağ tüketimi ve motor hasarı.
+
+Belirti: Yağ seviyesinin fark edilmeden düşmesi (1.000 km’de 0,5 litreyi aşabiliyor), yağ lambası, çekiş kaybı, zincir sesi; ileri aşamada motor hasarı.
+
+Neden oluyor: 1.2 TCe (H5Ft) ve Nissan’daki eşi 1.2 DIG-T motorlarda piston segmanı tasarımı ve yazılım nedeniyle yağ yanma odasında yanıyor. Yağ seviyesi düştükçe zincir ve turbo yağsız kalıyor; zincir atlaması ve motor hasarı görülüyor. 2012-2016 üretiminde yoğun.
+
+Çözüm: Yağ tüketim testi, ardından yazılım güncellemesi ve piston-segman takımının değişimi; hasar oluşmuşsa zincir seti ya da motor değişimi. Renault bu arıza için birçok ülkede uzatılmış garanti uyguladı.
+
+Önlem: Yağ seviyesini her 2.000-3.000 km’de ölçün, eksilen yağı tamamlayın; ikinci elde alırken yazılım ve segman işlemlerinin yapıldığını servis kaydından doğrulayın.
+
+Tahmini onarım maliyeti Eylül 2026 fiyatlarıyla 40.500–108.000 TL.
+
+Etkilenen motorlar: 1.2 DIG-T 115 HP (HRA2DDT)
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/nissan/juke/f15
+
+Fotoğraf: Vauxford · CC BY-SA 4.0 · Wikimedia Commons
+
+#nissan #nissanjuke #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

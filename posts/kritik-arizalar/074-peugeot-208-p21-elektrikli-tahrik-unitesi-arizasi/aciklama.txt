@@ -1,0 +1,17 @@
+Peugeot 208 Mk2 (P21 kasa · 2019’dan beri) sahipleri ve alıcıları için uyarı: Yüksek gerilim tahrik ünitesi arızası ve aracın hareket edememesi.
+
+Belirti: Göstergede çekiş sistemi arızası uyarısı çıkıyor; araç sürüşe hazır hale gelmiyor ya da hareket etmiyor.
+
+Neden oluyor: Tahrik ünitesini oluşturan elektrik motoru, invertör (bataryadan gelen akımı motorun kullanacağı biçime çeviren güç elektroniği) ya da bunları bağlayan yüksek gerilim kablo tesisatı arızalanıyor.
+
+Çözüm: Arıza kodları okunup yüksek gerilim sistemi kontrol ediliyor; arızalı invertör, elektrik motoru ya da kablo tesisatı onarılıyor veya değiştiriliyor.
+
+Önlem: İkinci elde servis kayıtlarında çekiş sistemi onarımı olup olmadığını ve yazılım güncellemelerinin yapıldığını kontrol ettirin.
+
+Etkilenen motorlar: e-208 136 HP 50 kWh
+
+Bu neslin diğer arızaları ve bakım takvimi: arabarehberim.net/peugeot/208/p21
+
+Fotoğraf: Vauxford · CC BY-SA 4.0 · Wikimedia Commons
+
+#peugeot #peugeot208 #kronikariza #arizarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba

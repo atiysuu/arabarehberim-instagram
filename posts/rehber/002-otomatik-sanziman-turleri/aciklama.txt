@@ -1,0 +1,23 @@
+Otomatik şanzıman türleri ve farkları
+
+İlanlarda hepsine “otomatik” yazılır, ama sürüş hissi, tüketim ve ikinci elde çıkan arızalar şanzımanın türüne bağlıdır.
+
+1. Tork konvertörlü klasik otomatik: En yaygın tür. Güç yağ üzerinden aktarılır; kalkışlar yumuşaktır, dur kalk trafikte zorlanmaz ve yüksek torku rahat taşır. Aisin ve ZF kutuları bu türdendir. Yağının zamanında değişmesi ömrünü en çok belirleyen şeydir.
+
+2. Çift kavramalı: DSG, EDC, DCT: İki kavrama sayesinde bir sonraki vites hazırda bekler; geçişler hızlı, tüketim düz vitese yakındır. Kuru kavramalılar şehir trafiğinde daha çok yıpranır: kalkışta titreme ve mekatronik arızası en bilinen sorunlardır.
+
+3. CVT: Sabit vitesi yoktur, oran kesintisiz değişir. Motor en verimli devirde tutulduğu için şehir içinde az yakar. Yıpranmış bir CVT’de kalkışta sarsıntı, uğultu ya da hızlanırken kayma hissi olur; onarımı çoğu zaman kutu değişimiyle biter.
+
+4. Hibritlerdeki e-CVT: Toyota ve Lexus hibritlerindeki e-CVT, adı benzese de kayışlı CVT değildir. Gücü bir planet dişli takımı paylaştırır. Kavraması ve kayışı olmadığı için arıza kaydı en temiz şanzıman türlerinden biridir.
+
+5. Yarı otomatik: Dualogic, MMT, ETG ve Easytronic aslında düz vites kutulardır; debriyajı bir hidrolik ünite yönetir. Ucuz ve az yakar ama geçişler yavaştır. Debriyaj ve hidrolik ünite arızası en bilinen masraflarıdır.
+
+6. Hangisini seçmeli?: Şehir içinde tork konvertörlü kutu ya da e-CVT en az dert çıkaranlardır. Çok yol yapılıyorsa çift kavramalının hızı ve düşük tüketimi öne çıkar. Hangi türde olursa olsun o nesle ait şanzıman arızalarına mutlaka bakın.
+
+Yazının tamamı: arabarehberim.net/rehber/otomatik-sanziman-turleri
+
+Kaydedin, lazım olduğunda elinizin altında olsun.
+
+Kapak fotoğrafı (Corolla E210): EurovisionNim · CC BY-SA 4.0 · Wikimedia Commons
+
+#otomatikvites #dsg #sanziman #otomotiv #arabarehberi #arabarehberim #otomobil #araba #ikinciel #ikincielaraba
