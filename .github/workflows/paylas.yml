@@ -33,7 +33,7 @@ jobs:
     steps:
       # Gorselleri indirmeye gerek yok (Instagram onlari raw adresinden
       # kendisi cekiyor); sadece metinler ve durum dosyalari gelsin.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           filter: blob:none
           sparse-checkout-cone-mode: false
