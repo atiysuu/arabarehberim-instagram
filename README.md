@@ -25,10 +25,9 @@ sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► dur
 - **Saat:** her gün yaklaşık 18:07 (Türkiye), iş akışı "Instagram'a Reels paylas".
 - **Sıra:** `reels/sira.csv` (seriler dönüşümlü). 176 video, günde 1 → yaklaşık 6 ay.
 - **Kayıt:** `durum/reels.jsonl`.
-- Instagram videoyu kendisi indiriyor ve `video/mp4` içerik tipi istiyor;
-  `raw.githubusercontent.com` mp4'ü `application/octet-stream` diye verdiği
-  için o günün videosu önce bu reponun `reels-barinak` release'ine yüklenir,
-  adresi oradan verilir. Release'te yalnızca son 5 video tutulur, eskileri
+- Instagram videoyu kendisi indiriyor. O günün videosu önce bu reponun
+  `reels-barinak` release'ine yüklenir, adresi oradan verilir (catreels'te
+  Instagram'ın bu adresten Reels indirdiği doğrulandı). Release'te yalnızca son 5 video tutulur, eskileri
   silinir (Instagram'daki Reels etkilenmez). Kapak görseli `-kapak.jpg`
   raw adresinden gider.
 - Ek secret gerekmez; release için iş akışının kendi `GITHUB_TOKEN`'ı yeter.

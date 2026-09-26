@@ -2,9 +2,9 @@
 
 Akis:
   1) reels/sira.csv'de durum/reels.jsonl'de olmayan ilk videoyu bul
-  2) videoyu bu reponun "reels-barinak" release'ine video/mp4 olarak yukle
-     (raw.githubusercontent.com mp4'u application/octet-stream diye veriyor,
-     Meta'nin indirmesi icin dogru icerik tipi gerekiyor)
+  2) videoyu bu reponun "reels-barinak" release'ine yukle ve adresi oradan ver
+     (catreels'te Meta'nin release adresinden Reels indirdigi dogrulandi;
+     GitHub her iki adreste de application/octet-stream donduruyor)
   3) POST /{ig}/media (media_type=REELS, video_url, cover_url) -> bekle -> media_publish
   4) sonucu durum/reels.jsonl'e yaz; release'te yalnizca son birkac video tutulur
 
@@ -193,12 +193,14 @@ def main():
             with tempfile.TemporaryDirectory() as gecici:
                 yerel = Path(gecici) / Path(video).name
                 git_dosyasi(f"reels/{video}", yerel)
+                yerel_boyut = yerel.stat().st_size
                 url = video_yukle(yerel, Path(video).name)
             with urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=60) as r:
-                tur = r.headers.get("Content-Type", "")
-            p.log(f"  barinak denemesi: {url} -> {tur}")
-            if not tur.startswith("video/mp4"):
-                p.hata(f"barinak videoyu {tur} diye veriyor, video/mp4 bekleniyordu")
+                boyut = int(r.headers.get("Content-Length") or 0)
+                p.log(f"  barinak denemesi: {url} -> HTTP {r.status}, "
+                      f"{r.headers.get('Content-Type', '')}, {boyut} bayt")
+            if boyut != yerel_boyut:
+                p.hata(f"barinaktaki video {boyut} bayt, yerelde {yerel_boyut} bayt")
                 return 1
 
         if a.kuru:
