@@ -51,6 +51,7 @@ yazar.
 
 Reels için aynısı: **Actions → "Instagram'a Reels paylas" → Run workflow**.
 
+- `kontrol` işaretli: paylaşım yapmaz; token hangi hesaba bağlı ve kota ne, onu yazar.
 - `kuru` işaretli: Instagram'a dokunmaz; sıradaki postların görsel adreslerini
   ve açıklamalarını kontrol eder.
 - `adet`: kaç post atılacağı (varsayılan 1).

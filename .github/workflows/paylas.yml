@@ -17,6 +17,10 @@ on:
         description: "Kuru calistirma: Instagram'a atma, sadece kontrol et"
         type: boolean
         default: false
+      kontrol:
+        description: "Token kontrolu: hangi hesaba bagli, kota ne (paylasim yapmaz)"
+        type: boolean
+        default: false
 
 # Iki calisma ayni anda ayni postu atmasin
 concurrency:
@@ -46,7 +50,7 @@ jobs:
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
-        run: python3 scripts/paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }}
+        run: python3 scripts/paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.kontrol && '--kontrol' || '' }}
 
       - name: Durumu kaydet
         if: always()
