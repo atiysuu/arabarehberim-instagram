@@ -21,6 +21,10 @@ on:
         description: "Kuru calistirmada ilk videoyu release'e yukleyip kontrol et"
         type: boolean
         default: false
+      zamanli:
+        description: "Zamanlanmis gibi calis: yalnizca paylasim saati geldiyse at (dis zamanlayici icin)"
+        type: boolean
+        default: false
 
 concurrency:
   group: instagram-reels
@@ -51,7 +55,7 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           REELS_SAATLERI: "18:07"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }} ${{ github.event_name == 'schedule' && '--zamanli' || '' }}
+        run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }} ${{ (github.event_name == 'schedule' || inputs.zamanli) && '--zamanli' || '' }}
 
       - name: Durumu kaydet
         if: always()
