@@ -1,13 +1,14 @@
 name: Instagram'a paylas
 
 on:
-  # GitHub cron UTC calisir; Turkiye UTC+3. GitHub zamanlanmis isleri
-  # yogunlukta 5-30 dk geciktirebilir, bu yuzden dakika :37.
-  #   06:37 UTC = 09:37 TR,  10:37 UTC = 13:37 TR,  17:37 UTC = 20:37 TR
-  # Gunde post sayisini degistirmek icin saat listesini degistirin.
+  # GitHub zamanlanmis isleri saatlerce geciktirebiliyor, bazen hic
+  # baslatmiyor. Bu yuzden is yarim saatte bir tetiklenir; betik paylasim
+  # saatinin (Turkiye saatiyle 09:37, 13:37, 20:37) gelip gelmedigine bakar
+  # ve kacan saati bir sonraki tetiklemede telafi eder. Saatleri degistirmek
+  # icin asagidaki PAYLASIM_SAATLERI'ni degistirin.
   # Durdurmak icin: Actions > "Instagram'a paylas" > ... > Disable workflow.
   schedule:
-    - cron: "37 6,10,17 * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
       adet:
@@ -50,7 +51,8 @@ jobs:
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
-        run: python3 scripts/paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.kontrol && '--kontrol' || '' }}
+          PAYLASIM_SAATLERI: "09:37,13:37,20:37"
+        run: python3 scripts/paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.kontrol && '--kontrol' || '' }} ${{ github.event_name == 'schedule' && '--zamanli' || '' }}
 
       - name: Durumu kaydet
         if: always()

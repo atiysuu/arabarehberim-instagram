@@ -9,8 +9,10 @@ sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► dur
              (günde 3 kez)          (resmi yayınlama API'si)   (ne paylaşıldı, bağlantısı)
 ```
 
-- **Saatler:** her gün yaklaşık 09:37, 13:37 ve 20:37 (Türkiye). GitHub
-  zamanlanmış işleri yoğunlukta birkaç dakika geciktirebilir.
+- **Saatler:** her gün 09:37, 13:37 ve 20:37 (Türkiye). GitHub zamanlanmış
+  işleri saatlerce geciktirebildiği, bazen hiç başlatmadığı için iş yarım
+  saatte bir uyanır; saati gelmiş ama atılmamış post varsa onu atar. Kaçan
+  saat bir sonraki uyanışta telafi edilir, iki post arasında en az 2 saat olur.
 - **Sıra:** `sira.csv`. Seriler karışık gider (künye, kronik arıza, bakım
   takvimi, kritik arıza, marka, liste); her serinin içinde Türkiye'de en
   yaygın modeller önce gelir. İlk post site tanıtımı. Sırayı yeniden kurmak
@@ -22,7 +24,7 @@ sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► dur
 
 ## Reels
 
-- **Saat:** her gün yaklaşık 18:07 (Türkiye), iş akışı "Instagram'a Reels paylas".
+- **Saat:** her gün 18:07'den sonraki ilk uyanışta (Türkiye; iş saatte bir uyanır), iş akışı "Instagram'a Reels paylas".
 - **Sıra:** `reels/sira.csv` (seriler dönüşümlü). 176 video, günde 1 → yaklaşık 6 ay.
 - **Kayıt:** `durum/reels.jsonl`.
 - Instagram videoyu kendisi indiriyor. O günün videosu önce bu reponun
@@ -61,8 +63,8 @@ Reels için aynısı: **Actions → "Instagram'a Reels paylas" → Run workflow*
 - Durdurmak: **Actions → "Instagram'a paylas" → ··· → Disable workflow**.
   Açınca kaldığı yerden devam eder.
 - Günde kaç post: `.github/workflows/paylas.yml` içindeki
-  `cron: "37 6,10,17 * * *"` satırındaki saat listesi (UTC). Örneğin
-  `"37 7,17 * * *"` günde iki post (10:37 ve 20:37 TR) demek.
+  `PAYLASIM_SAATLERI: "09:37,13:37,20:37"` (Türkiye saati). Örneğin
+  `"10:37,20:37"` günde iki post demek.
 
 ## Güvenlik ağları
 

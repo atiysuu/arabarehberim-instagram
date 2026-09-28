@@ -138,6 +138,8 @@ def main():
     ap.add_argument("--kuru", action="store_true")
     ap.add_argument("--barinak-dene", action="store_true",
                     help="kuru calistirmada ilk videoyu release'e yukleyip icerik tipini kontrol et")
+    ap.add_argument("--zamanli", action="store_true",
+                    help="zamanlanmis tetikleme: yalnizca paylasim saati geldiyse at")
     a = ap.parse_args()
 
     if not a.kuru and not os.getenv("IG_ACCESS_TOKEN"):
@@ -146,6 +148,8 @@ def main():
         return 0
 
     kayitlar = durum_oku()
+    if a.zamanli and not p.zamani_geldi_mi(kayitlar, os.getenv("REELS_SAATLERI", "18:07"), 120):
+        return 0
     bitenler = {k["post"] for k in kayitlar if k.get("durum") in ("paylasildi", "atlandi")}
     hata_sayisi = {}
     for k in kayitlar:

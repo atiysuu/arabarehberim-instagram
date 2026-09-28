@@ -1,11 +1,13 @@
 name: Instagram'a Reels paylas
 
 on:
-  # Gunde bir Reels: 15:07 UTC = 18:07 TR. Postlar (09:37, 13:37, 20:37)
-  # ayri is akisinda; ikisi birbirini beklemez.
+  # Gunde bir Reels, Turkiye saatiyle 18:07'den sonra. GitHub zamanlanmis
+  # isleri geciktirip atlayabildigi icin is saatte bir tetiklenir; betik
+  # o gunun Reels'i atilmadiysa ve saat geldiyse atar. Postlar ayri is
+  # akisinda; ikisi birbirini beklemez.
   # Durdurmak icin: Actions > "Instagram'a Reels paylas" > ... > Disable workflow.
   schedule:
-    - cron: "7 15 * * *"
+    - cron: "22 * * * *"
   workflow_dispatch:
     inputs:
       adet:
@@ -47,8 +49,9 @@ jobs:
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          REELS_SAATLERI: "18:07"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }}
+        run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }} ${{ github.event_name == 'schedule' && '--zamanli' || '' }}
 
       - name: Durumu kaydet
         if: always()

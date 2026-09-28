@@ -73,6 +73,44 @@ def ozet(m):
             f.write(m + "\n")
 
 
+# --- zamanlama -----------------------------------------------------------------
+# GitHub zamanlanmis isleri saatlerce geciktirebiliyor, bazen hic baslatmiyor.
+# Bu yuzden is akisi sik sik (yarim saatte bir) tetiklenir ve paylasim
+# saatinin gelip gelmedigine burada bakilir: bugun gecilen saat sayisi,
+# bugun paylasilan sayidan fazlaysa sira gelmistir. Kacan bir saat bir
+# sonraki tetiklemede telafi edilir.
+
+TR = dt.timezone(dt.timedelta(hours=3))
+
+
+def zamani_geldi_mi(kayitlar, saatler, en_az_ara_dk, simdi=None):
+    simdi = (simdi or dt.datetime.now(dt.timezone.utc)).astimezone(TR)
+    gecen = 0
+    for s in saatler.split(","):
+        sa, dk = (int(x) for x in s.strip().split(":"))
+        if simdi >= simdi.replace(hour=sa, minute=dk, second=0, microsecond=0):
+            gecen += 1
+    zamanlar = []
+    for k in kayitlar:
+        if k.get("durum") != "paylasildi" or not k.get("zaman"):
+            continue
+        try:
+            zamanlar.append(dt.datetime.fromisoformat(k["zaman"]).astimezone(TR))
+        except ValueError:
+            continue
+    bugun = sum(1 for z in zamanlar if z.date() == simdi.date())
+    if bugun >= gecen:
+        log(f"sira gelmedi: bugun {gecen} paylasim saati gecti, {bugun} paylasim yapildi")
+        return False
+    if zamanlar:
+        ara = (simdi - max(zamanlar)).total_seconds() / 60
+        if ara < en_az_ara_dk:
+            log(f"son paylasimdan bu yana {ara:.0f} dk gecti; en az {en_az_ara_dk} dk bekleniyor")
+            return False
+    log(f"sira geldi: bugun {gecen} paylasim saati gecti, {bugun} paylasim yapildi")
+    return True
+
+
 # --- Instagram API --------------------------------------------------------
 
 def _ipucu(kod, mesaj):
@@ -297,6 +335,8 @@ def main():
     p.add_argument("--adet", type=int, default=1)
     p.add_argument("--kuru", action="store_true", help="Instagram'a dokunmadan kontrol et")
     p.add_argument("--kontrol", action="store_true", help="token ve kotayi goster")
+    p.add_argument("--zamanli", action="store_true",
+                   help="zamanlanmis tetikleme: yalnizca paylasim saati geldiyse at")
     a = p.parse_args()
 
     if not a.kuru and not os.getenv("IG_ACCESS_TOKEN"):
@@ -313,6 +353,8 @@ def main():
         return 0
 
     kayitlar = durum_oku()
+    if a.zamanli and not zamani_geldi_mi(kayitlar, os.getenv("PAYLASIM_SAATLERI", "09:37,13:37,20:37"), 120):
+        return 0
     bitenler = {k["post"] for k in kayitlar if k.get("durum") in ("paylasildi", "atlandi")}
     hata_sayisi = {}
     for k in kayitlar:
