@@ -173,7 +173,7 @@ def main():
         if kul >= top:
             p.uyari(f"24 saatlik kota dolu ({kul}/{top}); bu tur atlandi")
             return 0
-        sonuncular = p.son_aciklamalar(ig)
+        sonuncular = p.son_aciklamalar(ig, reels=True)
 
     atilan = 0
     for s in kalanlar:

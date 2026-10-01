@@ -183,10 +183,11 @@ def kota(ig):
         return 0, 50
 
 
-def son_aciklamalar(ig, adet=25):
+def son_aciklamalar(ig, adet=25, reels=False):
+    # Post ve Reels ayni aracin ilk satirini tasiyabilir; yalniz ayni turle karsilastir
     try:
-        v = _istek("GET", f"{ig}/media", {"fields": "id,caption,permalink", "limit": adet})
-        return v.get("data", [])
+        v = _istek("GET", f"{ig}/media", {"fields": "id,caption,permalink,media_product_type", "limit": adet})
+        return [m for m in v.get("data", []) if (m.get("media_product_type") == "REELS") == reels]
     except IGHata as e:
         uyari(f"son postlar okunamadi, mukerrer kontrolu atlandi: {e}")
         return []
