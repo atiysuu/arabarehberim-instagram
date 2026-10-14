@@ -1,0 +1,76 @@
+name: Instagram'a seslendirmeli video paylas
+
+on:
+  # Gunde bir seslendirmeli video, Turkiye saatiyle 20:37'den sonra (prime
+  # saat). Videolar seslendirmeli/ klasorunde, sira seslendirmeli/sira.csv.
+  # Klasor bos ya da videolar bittiyse bu is bir sey yapmaz; aksam yuvasini
+  # gorsel post doldurur (paylas.yml, YEDEK_SAATLER).
+  # Durdurmak icin: Actions > "Instagram'a seslendirmeli video paylas" > ... > Disable workflow.
+  schedule:
+    - cron: "52 * * * *"
+  workflow_dispatch:
+    inputs:
+      adet:
+        description: "Kac video atilsin"
+        default: "1"
+      kuru:
+        description: "Kuru calistirma: Instagram'a atma, sadece kontrol et"
+        type: boolean
+        default: false
+      barinak_dene:
+        description: "Kuru calistirmada ilk videoyu release'e yukleyip kontrol et"
+        type: boolean
+        default: false
+      zamanli:
+        description: "Zamanlanmis gibi calis: yalnizca paylasim saati geldiyse at (dis zamanlayici icin)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: instagram-seslendirmeli
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # reels-barinak release'i + durum/seslendirmeli.jsonl commit'i
+
+jobs:
+  seslendirmeli:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      # Videolar indirilmez; betik o gun gereken tek videoyu git'ten ceker.
+      - uses: actions/checkout@v5
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/posts/
+            !/reels/
+            !/seslendirmeli/**/*.mp4
+            !/seslendirmeli/**/*.jpg
+
+      - name: Siradaki seslendirmeli videoyu paylas
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/reels_paylas.py --klasor seslendirmeli --saatler "20:37" --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }} ${{ (github.event_name == 'schedule' || inputs.zamanli) && '--zamanli' || '' }}
+
+      - name: Durumu kaydet
+        if: always()
+        run: |
+          git config user.name  "arabarehberim-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add durum/
+          if git diff --staged --quiet; then
+            echo "durumda degisiklik yok"
+            exit 0
+          fi
+          git commit -q -m "durum: seslendirmeli kaydi [skip ci]"
+          for i in 1 2 3; do
+            git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0
+            sleep $((i * 5))
+          done
+          echo "::error::durum kaydi push edilemedi"
+          exit 1

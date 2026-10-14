@@ -10,9 +10,13 @@ Akis:
 
 Kapak gorseli raw.githubusercontent.com'dan verilir (jpg dogru tiple geliyor).
 
+Ayni betik seslendirmeli videolari da atar: --klasor seslendirmeli
+(sira seslendirmeli/sira.csv, kayit durum/seslendirmeli.jsonl, ayni dosya duzeni).
+
 Kullanim:
   python3 scripts/reels_paylas.py            # siradaki 1 Reels
   python3 scripts/reels_paylas.py --kuru     # Instagram'a ve release'e dokunmadan kontrol
+  python3 scripts/reels_paylas.py --klasor seslendirmeli --saatler 20:37
 
 Ortam: IG_ACCESS_TOKEN, GITHUB_TOKEN (release icin; is akisi verir),
 GITHUB_REPOSITORY, GITHUB_SHA. Token degerleri hicbir yere yazilmaz.
@@ -33,6 +37,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import paylas as p  # noqa: E402
 
 KOK = p.KOK
+# --klasor ile degisir (klasor_sec)
+KLASOR = "reels"
 REELS = KOK / "reels"
 SIRA = REELS / "sira.csv"
 DURUM = KOK / "durum" / "reels.jsonl"
@@ -130,6 +136,19 @@ def durum_yaz(kayit):
         p.DURUM = eski_durum
 
 
+def barinak_adi(video):
+    ad = Path(video).name
+    return ad if KLASOR == "reels" else f"{KLASOR}-{ad}"
+
+
+def klasor_sec(ad):
+    global KLASOR, REELS, SIRA, DURUM
+    KLASOR = ad
+    REELS = KOK / ad
+    SIRA = REELS / "sira.csv"
+    DURUM = KOK / "durum" / ("reels.jsonl" if ad == "reels" else f"{ad}.jsonl")
+
+
 # --- ana akis -------------------------------------------------------------------
 
 def main():
@@ -140,7 +159,11 @@ def main():
                     help="kuru calistirmada ilk videoyu release'e yukleyip icerik tipini kontrol et")
     ap.add_argument("--zamanli", action="store_true",
                     help="zamanlanmis tetikleme: yalnizca paylasim saati geldiyse at")
+    ap.add_argument("--klasor", default="reels", help="reels ya da seslendirmeli")
+    ap.add_argument("--saatler", default=None, help="TR paylasim saatleri, virgulle")
     a = ap.parse_args()
+    klasor_sec(a.klasor)
+    saatler = a.saatler or os.getenv("REELS_SAATLERI", "13:37")
 
     if not a.kuru and not os.getenv("IG_ACCESS_TOKEN"):
         p.uyari("IG_ACCESS_TOKEN secret'i tanimli degil; Reels paylasimi atlandi.")
@@ -148,7 +171,11 @@ def main():
         return 0
 
     kayitlar = durum_oku()
-    if a.zamanli and not p.zamani_geldi_mi(kayitlar, os.getenv("REELS_SAATLERI", "18:07"), 120):
+    if a.zamanli and not p.zamani_geldi_mi(kayitlar, saatler, 120):
+        return 0
+    if not SIRA.exists():
+        p.log(f"{KLASOR}/sira.csv henuz yok; paylasilacak video yok")
+        p.ozet(f"{KLASOR}: henuz video yuklenmedi.")
         return 0
     bitenler = {k["post"] for k in kayitlar if k.get("durum") in ("paylasildi", "atlandi")}
     hata_sayisi = {}
@@ -160,10 +187,10 @@ def main():
     kalanlar = [s for s in sira if s["video"] not in bitenler]
     p.log(f"toplam {len(bitenler)} Reels bitti, {len(kalanlar)} kaldi")
     if not kalanlar:
-        p.ozet("Butun Reels videolari paylasildi.")
+        p.ozet(f"{KLASOR}: butun videolar paylasildi.")
         return 0
 
-    taban = p.gorsel_tabani().rsplit("/posts", 1)[0] + "/reels"
+    taban = p.gorsel_tabani().rsplit("/posts", 1)[0] + f"/{KLASOR}"
     ig = None
     sonuncular = []
     if not a.kuru:
@@ -186,8 +213,8 @@ def main():
         kapak_url = f"{taban}/{urllib.parse.quote(s['kapak'])}"
         p.log(f"\n#{s['sira']} {video}")
         try:
-            if not git_dosyasi_var(f"reels/{video}"):
-                raise p.IGHata(f"reels/{video} repoda yok")
+            if not git_dosyasi_var(f"{KLASOR}/{video}"):
+                raise p.IGHata(f"{KLASOR}/{video} repoda yok")
             p.url_dogrula(kapak_url)
         except p.IGHata as e:
             p.hata(str(e))
@@ -196,9 +223,9 @@ def main():
         if a.kuru and a.barinak_dene and atilan == 0:
             with tempfile.TemporaryDirectory() as gecici:
                 yerel = Path(gecici) / Path(video).name
-                git_dosyasi(f"reels/{video}", yerel)
+                git_dosyasi(f"{KLASOR}/{video}", yerel)
                 yerel_boyut = yerel.stat().st_size
-                url = video_yukle(yerel, Path(video).name)
+                url = video_yukle(yerel, barinak_adi(video))
             with urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=60) as r:
                 boyut = int(r.headers.get("Content-Length") or 0)
                 p.log(f"  barinak denemesi: {url} -> HTTP {r.status}, "
@@ -213,7 +240,7 @@ def main():
             atilan += 1
             continue
 
-        onceki = next((m for m in sonuncular if p.ilk_satir(m.get("caption")) == p.ilk_satir(aciklama)), None)
+        onceki = next((m for m in sonuncular if p.ayni_aciklama(m.get("caption"), aciklama)), None)
         if onceki:
             p.log(f"  zaten Instagram'da ({onceki.get('permalink')}), kayda gecildi")
             durum_yaz({"post": video, "sira": int(s["sira"]), "durum": "paylasildi",
@@ -224,10 +251,10 @@ def main():
         try:
             with tempfile.TemporaryDirectory() as gecici:
                 yerel = Path(gecici) / Path(video).name
-                git_dosyasi(f"reels/{video}", yerel)
+                git_dosyasi(f"{KLASOR}/{video}", yerel)
                 if yerel.stat().st_size > VIDEO_SINIRI:
                     raise p.IGHata(f"{video} 300 MB'tan buyuk")
-                video_url = video_yukle(yerel, Path(video).name)
+                video_url = video_yukle(yerel, barinak_adi(video))
             p.log(f"  barinak: {video_url}")
             cid = p.container(ig, {"media_type": "REELS", "video_url": video_url,
                                    "cover_url": kapak_url, "caption": aciklama,

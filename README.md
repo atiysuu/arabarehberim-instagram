@@ -1,15 +1,26 @@
 # Araba Rehberim · Instagram paylaşımı
 
 [arabarehberim.net](https://arabarehberim.net) için hazırlanan 1.546 Instagram
-postunu günde üç kez, 176 Reels videosunu günde bir kez kendi kendine
+postunu, 176 Reels videosunu ve seslendirmeli videoları kendi kendine
 paylaşır. GitHub Actions üzerinde çalışır; bilgisayarın kapalı olabilir.
 
 ```
 sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► durum/paylasilanlar.jsonl
-             (günde 3 kez)          (resmi yayınlama API'si)   (ne paylaşıldı, bağlantısı)
+             (günde 1-2 kez)        (resmi yayınlama API'si)   (ne paylaşıldı, bağlantısı)
 ```
 
-- **Saatler:** her gün 09:37, 13:37 ve 20:37 (Türkiye). GitHub zamanlanmış
+**Günlük düzen (Türkiye saati):**
+
+| Saat | Ne | İş akışı |
+|---|---|---|
+| 09:37 | görsel post | "Instagram'a paylas" |
+| 13:37 | Reels (`reels/`) | "Instagram'a Reels paylas" |
+| 20:37 | seslendirmeli video (`seslendirmeli/`) | "Instagram'a seslendirmeli video paylas" |
+
+`seslendirmeli/` boşsa ya da videolar bittiyse 20:37'yi görsel post doldurur
+(`paylas.yml` içindeki `YEDEK_SAATLER`).
+
+- **Saatler:** yukarıdaki tablo. GitHub zamanlanmış
   işleri saatlerce geciktirebildiği, bazen hiç başlatmadığı için iş yarım
   saatte bir uyanır; saati gelmiş ama atılmamış post varsa onu atar. Kaçan
   saat bir sonraki uyanışta telafi edilir, iki post arasında en az 2 saat olur.
@@ -17,14 +28,14 @@ sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► dur
   takvimi, kritik arıza, marka, liste); her serinin içinde Türkiye'de en
   yaygın modeller önce gelir. İlk post site tanıtımı. Sırayı yeniden kurmak
   için `python3 scripts/sira_olustur.py`.
-- **Süre:** 1.546 post, günde 3 → yaklaşık 17 ay.
+- **Süre:** günde 1 post (seslendirmeli videolar bitince 2).
 - Görseller bu reponun `posts/` klasöründen, `raw.githubusercontent.com`
   adresinden Instagram'a verilir. Bu yüzden repo **public** kalmalı; içinde
   gizli bir şey yok.
 
 ## Reels
 
-- **Saat:** her gün 18:07'den sonraki ilk uyanışta (Türkiye; iş saatte bir uyanır), iş akışı "Instagram'a Reels paylas".
+- **Saat:** her gün 13:37'den sonraki ilk uyanışta (Türkiye; iş saatte bir uyanır), iş akışı "Instagram'a Reels paylas".
 - **Sıra:** `reels/sira.csv` (seriler dönüşümlü). 176 video, günde 1 → yaklaşık 6 ay.
 - **Kayıt:** `durum/reels.jsonl`.
 - Instagram videoyu kendisi indiriyor. O günün videosu önce bu reponun
@@ -33,6 +44,12 @@ sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► dur
   silinir (Instagram'daki Reels etkilenmez). Kapak görseli `-kapak.jpg`
   raw adresinden gider.
 - Ek secret gerekmez; release için iş akışının kendi `GITHUB_TOKEN`'ı yeter.
+
+## Seslendirmeli videolar
+
+- `seslendirmeli/` klasörü `reels/` ile aynı düzende: mp4 + açıklama `.txt` +
+  `-kapak.jpg`, sıra `seslendirmeli/sira.csv` (sütunlar `sira,video,aciklama,kapak`).
+- Kayıt `durum/seslendirmeli.jsonl`. Aynı betik (`scripts/reels_paylas.py --klasor seslendirmeli`).
 
 ## Kurulum
 

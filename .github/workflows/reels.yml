@@ -1,7 +1,7 @@
 name: Instagram'a Reels paylas
 
 on:
-  # Gunde bir Reels, Turkiye saatiyle 18:07'den sonra. GitHub zamanlanmis
+  # Gunde bir Reels, Turkiye saatiyle 13:37'den sonra. GitHub zamanlanmis
   # isleri geciktirip atlayabildigi icin is saatte bir tetiklenir; betik
   # o gunun Reels'i atilmadiysa ve saat geldiyse atar. Postlar ayri is
   # akisinda; ikisi birbirini beklemez.
@@ -53,7 +53,7 @@ jobs:
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          REELS_SAATLERI: "18:07"
+          REELS_SAATLERI: "13:37"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/reels_paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }} ${{ (github.event_name == 'schedule' || inputs.zamanli) && '--zamanli' || '' }}
 

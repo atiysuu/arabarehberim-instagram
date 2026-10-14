@@ -111,6 +111,46 @@ def zamani_geldi_mi(kayitlar, saatler, en_az_ara_dk, simdi=None):
     return True
 
 
+# Aksam yuvasi seslendirmeli videolarin. O klasorde paylasilacak video
+# kalmadiysa (henuz yuklenmediyse ya da 30 video bittiyse) aksam yuvasini
+# gorsel post doldurur, hesap bos kalmaz. Son videonun atildigi gun de yuva
+# video sayilir; ayni aksam ikinci bir paylasim olmaz.
+SESLI = KOK / "seslendirmeli"
+SESLI_DURUM = KOK / "durum" / "seslendirmeli.jsonl"
+
+
+def sesli_yuva_dolu(simdi=None):
+    simdi = (simdi or dt.datetime.now(dt.timezone.utc)).astimezone(TR)
+    kayitlar = []
+    if SESLI_DURUM.exists():
+        kayitlar = [json.loads(x) for x in SESLI_DURUM.read_text(encoding="utf-8").splitlines() if x.strip()]
+    for k in kayitlar:
+        if k.get("durum") == "paylasildi" and k.get("zaman"):
+            try:
+                if dt.datetime.fromisoformat(k["zaman"]).astimezone(TR).date() == simdi.date():
+                    return True
+            except ValueError:
+                pass
+    sira = SESLI / "sira.csv"
+    if not sira.exists():
+        return False
+    bitenler = {k["post"] for k in kayitlar if k.get("durum") in ("paylasildi", "atlandi")}
+    return any(r.get("video") and r["video"] not in bitenler
+               for r in csv.DictReader(open(sira, encoding="utf-8")))
+
+
+def post_saatleri():
+    saatler = os.getenv("PAYLASIM_SAATLERI", "09:37")
+    yedek = os.getenv("YEDEK_SAATLER", "").strip()
+    if yedek:
+        if sesli_yuva_dolu():
+            log(f"aksam yuvasi ({yedek}) seslendirmeli videonun")
+        else:
+            log(f"seslendirmeli video yok; aksam yuvasini ({yedek}) gorsel post dolduruyor")
+            saatler += "," + yedek
+    return saatler
+
+
 # --- Instagram API --------------------------------------------------------
 
 def _ipucu(kod, mesaj):
@@ -181,6 +221,11 @@ def kota(ig):
     except IGHata as e:
         uyari(f"kota okunamadi (kritik degil): {e}")
         return 0, 50
+
+
+def ayni_aciklama(a, b):
+    # Tum metin karsilastirilir; ayni aracin farkli icerikleri ilk satiri paylasabiliyor
+    return " ".join((a or "").split()) == " ".join((b or "").split())
 
 
 def son_aciklamalar(ig, adet=25, reels=False):
@@ -354,7 +399,7 @@ def main():
         return 0
 
     kayitlar = durum_oku()
-    if a.zamanli and not zamani_geldi_mi(kayitlar, os.getenv("PAYLASIM_SAATLERI", "09:37,13:37,20:37"), 120):
+    if a.zamanli and not zamani_geldi_mi(kayitlar, post_saatleri(), 120):
         return 0
     bitenler = {k["post"] for k in kayitlar if k.get("durum") in ("paylasildi", "atlandi")}
     hata_sayisi = {}
@@ -403,7 +448,7 @@ def main():
             continue
 
         # Onceki tur yayinlayip kaydi yazamadiysa ikinci kez atma
-        onceki = next((m for m in sonuncular if ilk_satir(m.get("caption")) == ilk_satir(aciklama)), None)
+        onceki = next((m for m in sonuncular if ayni_aciklama(m.get("caption"), aciklama)), None)
         if onceki:
             log(f"  zaten Instagram'da ({onceki.get('permalink')}), kayda gecildi")
             durum_yaz({"post": yol, "sira": int(s["sira"]), "durum": "paylasildi",

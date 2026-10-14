@@ -1,11 +1,12 @@
 name: Instagram'a paylas
 
 on:
+  # Gunluk duzen (Turkiye saati): 09:37 gorsel post, 13:37 Reels
+  # (reels.yml), 20:37 seslendirmeli video (seslendirmeli.yml). Seslendirmeli
+  # video kalmadiysa 20:37'yi gorsel post doldurur (YEDEK_SAATLER).
   # GitHub zamanlanmis isleri saatlerce geciktirebiliyor, bazen hic
-  # baslatmiyor. Bu yuzden is yarim saatte bir tetiklenir; betik paylasim
-  # saatinin (Turkiye saatiyle 09:37, 13:37, 20:37) gelip gelmedigine bakar
-  # ve kacan saati bir sonraki tetiklemede telafi eder. Saatleri degistirmek
-  # icin asagidaki PAYLASIM_SAATLERI'ni degistirin.
+  # baslatmiyor. Bu yuzden is yarim saatte bir tetiklenir; betik saatin
+  # gelip gelmedigine bakar ve kacan saati bir sonraki tetiklemede telafi eder.
   # Durdurmak icin: Actions > "Instagram'a paylas" > ... > Disable workflow.
   schedule:
     - cron: "7,37 * * * *"
@@ -50,12 +51,15 @@ jobs:
             /*
             !/posts/**/*.jpg
             !/reels/
+            !/seslendirmeli/**/*.mp4
+            !/seslendirmeli/**/*.jpg
 
       - name: Siradaki postu paylas
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          PAYLASIM_SAATLERI: "09:37,13:37,20:37"
+          PAYLASIM_SAATLERI: "09:37"
+          YEDEK_SAATLER: "20:37"
         run: python3 scripts/paylas.py --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.kontrol && '--kontrol' || '' }} ${{ (github.event_name == 'schedule' || inputs.zamanli) && '--zamanli' || '' }}
 
       - name: Durumu kaydet
