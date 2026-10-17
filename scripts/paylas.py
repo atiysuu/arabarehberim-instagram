@@ -81,10 +81,15 @@ def ozet(m):
 # sonraki tetiklemede telafi edilir.
 
 TR = dt.timezone(dt.timedelta(hours=3))
+GEC_SAAT = 23  # bu saatten (TR) sonra zamanli paylasim yok
 
 
 def zamani_geldi_mi(kayitlar, saatler, en_az_ara_dk, simdi=None):
     simdi = (simdi or dt.datetime.now(dt.timezone.utc)).astimezone(TR)
+    # Gece yarisina dogru telafi paylasimi erisim almaz; kacan yuva o gun kalir
+    if simdi.hour >= GEC_SAAT:
+        log(f"saat {simdi:%H:%M}; {GEC_SAAT}:00'ten sonra telafi paylasimi yapilmaz")
+        return False
     gecen = 0
     for s in saatler.split(","):
         if not s.strip():
