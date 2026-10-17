@@ -1,0 +1,28 @@
+name: Instagram istatistiklerini oku
+
+# Yalniz elle calisir; hicbir sey paylasmaz, sonucu kayitta yazdirir.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  oku:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/posts/
+            !/reels/
+            !/seslendirmeli/
+
+      - name: Istatistikleri cek
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python3 scripts/istatistik.py
