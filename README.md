@@ -13,12 +13,13 @@ sira.csv ──► scripts/paylas.py ──► Instagram Graph API ──► dur
 
 | Saat | Ne | İş akışı |
 |---|---|---|
-| 09:37 | görsel post | "Instagram'a paylas" |
-| 13:37 | Reels (`reels/`) | "Instagram'a Reels paylas" |
+| 13:37 | seslendirmeli video (`seslendirmeli/`) | "Instagram'a seslendirmeli video paylas" |
 | 20:37 | seslendirmeli video (`seslendirmeli/`) | "Instagram'a seslendirmeli video paylas" |
 
-`seslendirmeli/` boşsa ya da videolar bittiyse 20:37'yi görsel post doldurur
-(`paylas.yml` içindeki `YEDEK_SAATLER`).
+2026-10-18'den itibaren yalnız seslendirmeli videolar paylaşılıyor; görsel
+postlar ve `reels/` videoları durduruldu (Reels iş akışı yalnız elle çalışır).
+`seslendirmeli/` boşsa ya da videolar bittiyse bu iki saati görsel post
+doldurur (`paylas.yml` içindeki `YEDEK_SAATLER`).
 
 - **Saatler:** yukarıdaki tablo. GitHub zamanlanmış
   işleri saatlerce geciktirebildiği, bazen hiç başlatmadığı için iş yarım

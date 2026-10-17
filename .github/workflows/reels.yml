@@ -5,9 +5,9 @@ on:
   # isleri geciktirip atlayabildigi icin is saatte bir tetiklenir; betik
   # o gunun Reels'i atilmadiysa ve saat geldiyse atar. Postlar ayri is
   # akisinda; ikisi birbirini beklemez.
-  # Durdurmak icin: Actions > "Instagram'a Reels paylas" > ... > Disable workflow.
-  schedule:
-    - cron: "22 * * * *"
+  # 2026-10-18'den itibaren durduruldu: kullanici yalniz seslendirmeli
+  # videolarin paylasilmasini istedi. Geri acmak icin asagiya
+  # schedule: - cron: "22 * * * *" eklenir. Elle calistirma duruyor.
   workflow_dispatch:
     inputs:
       adet:

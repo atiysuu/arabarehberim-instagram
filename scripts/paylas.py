@@ -87,6 +87,8 @@ def zamani_geldi_mi(kayitlar, saatler, en_az_ara_dk, simdi=None):
     simdi = (simdi or dt.datetime.now(dt.timezone.utc)).astimezone(TR)
     gecen = 0
     for s in saatler.split(","):
+        if not s.strip():
+            continue
         sa, dk = (int(x) for x in s.strip().split(":"))
         if simdi >= simdi.replace(hour=sa, minute=dk, second=0, microsecond=0):
             gecen += 1
@@ -111,8 +113,8 @@ def zamani_geldi_mi(kayitlar, saatler, en_az_ara_dk, simdi=None):
     return True
 
 
-# Aksam yuvasi seslendirmeli videolarin. O klasorde paylasilacak video
-# kalmadiysa (henuz yuklenmediyse ya da 30 video bittiyse) aksam yuvasini
+# YEDEK_SAATLER seslendirmeli videolarin yuvalari. O klasorde paylasilacak
+# video kalmadiysa (henuz yuklenmediyse ya da videolar bittiyse) bu yuvalari
 # gorsel post doldurur, hesap bos kalmaz. Son videonun atildigi gun de yuva
 # video sayilir; ayni aksam ikinci bir paylasim olmaz.
 SESLI = KOK / "seslendirmeli"
@@ -144,9 +146,9 @@ def post_saatleri():
     yedek = os.getenv("YEDEK_SAATLER", "").strip()
     if yedek:
         if sesli_yuva_dolu():
-            log(f"aksam yuvasi ({yedek}) seslendirmeli videonun")
+            log(f"yuvalar ({yedek}) seslendirmeli videonun")
         else:
-            log(f"seslendirmeli video yok; aksam yuvasini ({yedek}) gorsel post dolduruyor")
+            log(f"seslendirmeli video yok; yuvalari ({yedek}) gorsel post dolduruyor")
             saatler += "," + yedek
     return saatler
 

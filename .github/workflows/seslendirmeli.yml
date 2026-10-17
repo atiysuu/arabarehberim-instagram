@@ -1,10 +1,11 @@
 name: Instagram'a seslendirmeli video paylas
 
 on:
-  # Gunde bir seslendirmeli video, Turkiye saatiyle 20:37'den sonra (prime
-  # saat). Videolar seslendirmeli/ klasorunde, sira seslendirmeli/sira.csv.
-  # Klasor bos ya da videolar bittiyse bu is bir sey yapmaz; aksam yuvasini
-  # gorsel post doldurur (paylas.yml, YEDEK_SAATLER).
+  # Gunde iki seslendirmeli video, Turkiye saatiyle 13:37 ve 20:37'den sonra.
+  # Hesapta paylasilan tek icerik bu (2026-10-18'den itibaren). Videolar
+  # seslendirmeli/ klasorunde, sira seslendirmeli/sira.csv. Klasor bos ya da
+  # videolar bittiyse bu is bir sey yapmaz; yuvalari gorsel post doldurur
+  # (paylas.yml, YEDEK_SAATLER).
   # Durdurmak icin: Actions > "Instagram'a seslendirmeli video paylas" > ... > Disable workflow.
   schedule:
     - cron: "52 * * * *"
@@ -55,7 +56,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/reels_paylas.py --klasor seslendirmeli --saatler "20:37" --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }} ${{ (github.event_name == 'schedule' || inputs.zamanli) && '--zamanli' || '' }}
+        run: python3 scripts/reels_paylas.py --klasor seslendirmeli --saatler "13:37,20:37" --adet "${{ inputs.adet || '1' }}" ${{ inputs.kuru && '--kuru' || '' }} ${{ inputs.barinak_dene && '--barinak-dene' || '' }} ${{ (github.event_name == 'schedule' || inputs.zamanli) && '--zamanli' || '' }}
 
       - name: Durumu kaydet
         if: always()
