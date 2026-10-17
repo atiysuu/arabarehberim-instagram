@@ -1,0 +1,11 @@
+Elektrikli C4 hızlı şarjda doluyor ama evde şarj olmuyorsa sorun araç üstü şarj ünitesinde olabilir.
+
+e-C4 136 HP 50 kWh’de şebekeden gelen alternatif akımı bataryaya uygun akıma çeviren araç üstü şarj ünitesi (OBC) arızalanıyor ya da şarj soketinin kilidi ve bağlantıları sorun çıkarıyor. Evde ve AC istasyonlarda şarj başlamıyor ya da yarıda kesiliyor; arıza ünitedeyse hızlı (DC) şarj çoğu zaman çalışıyor. Soket ve yazılım kontrol ediliyor, gerekirse ünite değişiyor: 30.000–90.000 TL (Eylül 2026). Alırken aracı hem evde hem hızlı şarjda dene.
+
+Fatura aralığı Eylül 2026 verisidir; servise ve parçaya göre değişebilir.
+
+Model model teknik bilgi, kronik arıza ve yakıt: arabarehberim.net
+
+Müzik: "Pyro Flow" Kevin MacLeod (incompetech.com) · CC BY 4.0
+
+#citroenc4 #ec4 #elektrikliaraba #kronikariza #ikinciel #arabarehberim
