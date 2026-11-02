@@ -51,15 +51,20 @@ def main() -> int:
     print(f"::add-mask::{yeni}")
 
     bitis = dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=sure)
-    TOKEN_DURUM.parent.mkdir(exist_ok=True)
-    TOKEN_DURUM.write_text(json.dumps({
-        "bitis": bitis.isoformat(timespec="seconds"),
-        "yenilendi": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-    }, indent=2) + "\n", encoding="utf-8")
-    print(f"token yenilendi, {sure // 86400} gun gecerli (bitis {bitis.date()})")
+    print(f"Instagram yeni sure verdi: {sure // 86400} gun (bitis {bitis.date()})")
+
+    def kaydet():
+        # Bitis tarihi yalniz secret'taki token bu sureyi aldiysa yazilir;
+        # yoksa paylasim betiklerinin "token bitiyor" uyarisi susar.
+        TOKEN_DURUM.parent.mkdir(exist_ok=True)
+        TOKEN_DURUM.write_text(json.dumps({
+            "bitis": bitis.isoformat(timespec="seconds"),
+            "yenilendi": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        }, indent=2) + "\n", encoding="utf-8")
 
     if yeni == token:
         print("Instagram ayni tokeni dondurdu; secret'i guncellemeye gerek yok.")
+        kaydet()
         return 0
 
     pat = os.getenv("GH_PAT")
@@ -77,6 +82,7 @@ def main() -> int:
         print(f"::error::gh secret set basarisiz: {islem.stderr.strip()[:300]}")
         return 1
     print("IG_ACCESS_TOKEN secret'i guncellendi")
+    kaydet()
     return 0
 
 
